@@ -1,0 +1,321 @@
+/*=========================================
+PORTFOLIO PAGE LAYOUT
+=========================================*/
+
+.portfolio-page {
+  padding-top: 170px;
+
+  padding-bottom: 120px;
+
+  min-height: 100vh;
+}
+
+.portfolio-page .container {
+  max-width: 1400px;
+
+  margin: 0 auto;
+}
+
+.portfolio-header {
+  max-width: 760px;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+.portfolio-header .section-badge {
+  margin-bottom: 20px;
+}
+
+.portfolio-header h1 {
+  font-size: 58px;
+
+  line-height: 1.1;
+
+  margin-bottom: 24px;
+}
+
+.portfolio-header p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  color: #aab4c6;
+}
+
+.portfolio-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 32px;
+
+  margin-top: 50px;
+}
+
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-page {
+    padding-top: 140px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.logo img {
+  height: 100px;
+
+  width: auto;
+
+  display: block;
+}
+/*=====================================
+FILTERS
+=====================================*/
+
+.portfolio-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin: 70px 0;
+
+  gap: 30px;
+
+  flex-wrap: wrap;
+}
+
+.portfolio-search {
+  flex: 1;
+}
+
+.portfolio-search input {
+  width: 100%;
+
+  padding: 18px 24px;
+
+  background: #0e1117;
+
+  border: 1px solid rgba(37, 99, 235, 0.12);
+
+  border-radius: 16px;
+
+  outline: none;
+
+  color: #fff;
+
+  font-size: 16px;
+}
+
+.portfolio-filters {
+  display: flex;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.portfolio-filters button {
+  padding: 14px 22px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  cursor: pointer;
+
+  background: #0e1117;
+
+  color: #fff;
+
+  font-weight: 600;
+
+  transition: 0.35s;
+}
+
+.portfolio-filters button.active {
+  background: #2563eb;
+}
+
+.portfolio-filters button:hover {
+  background: #1d4ed8;
+}
+#pagination {
+  margin-top: 80px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+#pagination button {
+  width: 48px;
+
+  height: 48px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  cursor: pointer;
+
+  background: #111827;
+
+  color: #fff;
+
+  transition: 0.35s;
+}
+
+#pagination button.active {
+  background: #2563eb;
+}
+/*=========================================
+LIGHTBOX
+=========================================*/
+
+.lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.92);
+
+  backdrop-filter: blur(18px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  visibility: hidden;
+
+  opacity: 0;
+
+  transition: 0.4s;
+
+  z-index: 99999;
+}
+
+.lightbox.active {
+  visibility: visible;
+
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 1200px;
+
+  width: 92%;
+
+  text-align: center;
+
+  position: relative;
+}
+
+.lightbox img {
+  width: 100%;
+
+  max-height: 80vh;
+
+  object-fit: contain;
+
+  border-radius: 24px;
+
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+
+  transform: scale(0.92);
+
+  transition: 0.4s;
+}
+
+.lightbox.active img {
+  transform: scale(1);
+}
+
+.lightbox-info {
+  margin-top: 35px;
+}
+
+.lightbox-info span {
+  color: #3b82f6;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.lightbox-info h2 {
+  margin-top: 12px;
+
+  font-size: 34px;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+
+  width: 58px;
+
+  height: 58px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #111827;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 22px;
+
+  transition: 0.35s;
+}
+
+.lightbox-close {
+  top: 40px;
+
+  right: 40px;
+}
+
+.lightbox-prev {
+  left: 40px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 40px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: #2563eb;
+}

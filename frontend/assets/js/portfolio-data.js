@@ -1,0 +1,171 @@
+const portfolioProjects = [
+  { id: 1, title: "Crunch Fit", category: "logo", image: "project-1.png" },
+  { id: 2, title: "Wil Honey", category: "logo", image: "project-2.png" },
+  {
+    id: 3,
+    title: "Voltx Energy",
+    category: "logo",
+    image: "project-3.png",
+  },
+  { id: 4, title: "Coco Bliss", category: "logo", image: "project-4.png" },
+  {
+    id: 5,
+    title: "Luméa Cosmetics",
+    category: "logo",
+    image: "project-5.png",
+  },
+  {
+    id: 6,
+    title: "Aura Coffee",
+    category: "logo",
+    image: "project-6.png",
+  },
+
+  {
+    id: 7,
+    title: "Crunch Fit",
+    category: "packaging",
+    image: "project-7.png",
+  },
+  {
+    id: 8,
+    title: "Noir Perfume",
+    category: "branding",
+    image: "project-8.png",
+  },
+  {
+    id: 9,
+    title: "Coco Bliss",
+    category: "packaging",
+    image: "project-9.png",
+  },
+  {
+    id: 10,
+    title: "Voltx Energy",
+    category: "packaging",
+    image: "project-10.png",
+  },
+  {
+    id: 11,
+    title: "Luméa Cosmetics",
+    category: "branding",
+    image: "project-11.png",
+  },
+  {
+    id: 12,
+    title: "Aura Coffee",
+    category: "branding",
+    image: "project-12.png",
+  },
+
+  {
+    id: 13,
+    title: "Thalapathy Vijay Birthday Poster",
+    category: "socialmedia",
+    image: "project-13.png",
+  },
+  {
+    id: 14,
+    title: "Thalapathy Vijay Birthday Poster",
+    category: "socialmedia",
+    image: "project-14.png",
+  },
+  {
+    id: 15,
+    title: "Vijay Typography Poster",
+    category: "socialmedia",
+    image: "project-15.png",
+  },
+  {
+    id: 16,
+    title: "Vijay Fan Poster",
+    category: "socialmedia",
+    image: "project-16.png",
+  },
+  {
+    id: 17,
+    title: "Vijay Birthday Wishes Poster",
+    category: "socialmedia",
+    image: "project-17.png",
+  },
+  {
+    id: 18,
+    title: "Mamitha Baiju Birthday Poster",
+    category: "socialmedia",
+    image: "project-18.png",
+  },
+  {
+    id: 19,
+    title: "Kavin Birthday Poster",
+    category: "socialmedia",
+    image: "project-19.png",
+  },
+
+  {
+    id: 20,
+    title: "Crunch Fit",
+    category: "packaging",
+    image: "project-20.png",
+  },
+  {
+    id: 21,
+    title: "Wil Honey",
+    category: "packaging",
+    image: "project-21.png",
+  },
+  {
+    id: 22,
+    title: "Voltx",
+    category: "packaging",
+    image: "project-22.png",
+  },
+  {
+    id: 23,
+    title: "Coco Bliss",
+    category: "branding",
+    image: "project-23.png",
+  },
+  {
+    id: 24,
+    title: "Luméa Cosmetics",
+    category: "branding",
+    image: "project-24.png",
+  },
+  {
+    id: 25,
+    title: "Aura Coffee",
+    category: "branding",
+    image: "project-25.png",
+  },
+
+  {
+    id: 26,
+    title: "Snap Aura Contact Poster",
+    category: "marketing",
+    image: "project-26.png",
+  },
+  {
+    id: 27,
+    title: "Snap Aura Invitation Design",
+    category: "marketing",
+    image: "project-27.png",
+  },
+  {
+    id: 28,
+    title: "Snap Aura Service Advertisement",
+    category: "marketing",
+    image: "project-28.png",
+  },
+  {
+    id: 29,
+    title: "Snap Aura Promotional Poster",
+    category: "marketing",
+    image: "project-29.png",
+  },
+  {
+    id: 30,
+    title: "Snap Aura Company Profile",
+    category: "marketing",
+    image: "project-30.png",
+  },
+];

@@ -1,0 +1,25 @@
+:root {
+  --bg: #050505;
+  --surface: #0e1117;
+  --card: #111827;
+
+  /* Premium Dark Electric Blue Theme */
+
+  --primary: #1d4ed8;
+  --secondary: #1e3a8a;
+
+  --primary-light: #2563eb;
+  --primary-dark: #172554;
+
+  --white: #ffffff;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+
+  --radius: 18px;
+
+  --transition: 0.35s ease;
+
+  --shadow: 0 10px 35px rgba(0, 183, 255, 0.15);
+
+  --container: 1280px;
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Portfolio | Snap Aura Designs</title>
+
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/portfolio.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container navbar">
+        <a href="../index.html" class="logo">
+          <img
+            src="../assets/images/logo/logo.png"
+            alt="Snap Aura Designs Logo"
+          />
+        </a>
+
+        <nav class="nav-menu">
+          <a href="../index.html">Home</a>
+
+          <a href="../index.html#about">About</a>
+
+          <a href="../index.html#services">Services</a>
+
+          <a href="../index.html#portfolio">Portfolio</a>
+
+          <a href="../index.html#pricing">Pricing</a>
+
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+
+        <a href="../index.html#contact" class="btn-primary"> Get Quote </a>
+      </div>
+    </header>
+    <section class="portfolio-page section">
+      <div class="container">
+        <div class="portfolio-header">
+          <div class="section-badge">FULL PORTFOLIO</div>
+
+          <h1>Our Creative Portfolio</h1>
+
+          <p>
+            Explore our branding, logo, packaging, social media and marketing
+            projects.
+          </p>
+        </div>
+
+        <div class="portfolio-top">
+          <div class="portfolio-search">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search projects..."
+            />
+          </div>
+
+          <div class="portfolio-filters">
+            <button class="active" data-filter="all">All</button>
+
+            <button data-filter="logo">Logo</button>
+
+            <button data-filter="branding">Branding</button>
+
+            <button data-filter="packaging">Packaging</button>
+
+            <button data-filter="socialmedia">Social Media</button>
+
+            <button data-filter="marketing">Marketing</button>
+          </div>
+        </div>
+
+        <div id="portfolioGrid" class="portfolio-grid"></div>
+
+        <div id="pagination"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+        PORTFOLIO LIGHTBOX
+========================================== -->
+
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-overlay"></div>
+
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+
+      <button class="lightbox-prev" id="lightboxPrev">❮</button>
+
+      <button class="lightbox-next" id="lightboxNext">❯</button>
+
+      <div class="lightbox-content">
+        <img id="lightboxImage" src="" alt="" />
+
+        <div class="lightbox-info">
+          <span id="lightboxCategory"></span>
+
+          <h2 id="lightboxTitle"></h2>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/portfolio-data.js"></script>
+
+    <script src="../assets/js/portfolio-page.js"></script>
+
+    <script src="../assets/js/lightbox.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
