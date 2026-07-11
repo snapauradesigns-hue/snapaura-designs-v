@@ -1,4 +1,4 @@
-const Portfolio = require("../models/Portfolio");
+const Portfolio = require("../models/portfolio");
 const Contact = require("../models/Contact");
 
 exports.getStats = async (req, res) => {
