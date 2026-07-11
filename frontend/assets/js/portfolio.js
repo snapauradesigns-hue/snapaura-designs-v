@@ -5,7 +5,7 @@
 
 const portfolioGrid = document.querySelector(".portfolio-page-grid");
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://snap-aura-backend.onrender.com";
 
 if (portfolioGrid) {
   loadPortfolio();

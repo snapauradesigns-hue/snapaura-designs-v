@@ -4,7 +4,7 @@ if (!token) {
   window.location = "login.html";
 }
 
-const API = "http://localhost:5000/api";
+const API = "https://snap-aura-backend.onrender.com";
 
 const table = document.getElementById("contactTable");
 

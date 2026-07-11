@@ -3,7 +3,7 @@
    Dynamic Portfolio
 ========================================== */
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://snap-aura-backend.onrender.com";
 
 const grid = document.getElementById("portfolioGrid");
 const filterButtons = document.querySelectorAll(".portfolio-filters button");
