@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Snap Aura Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+
+      <aside class="sidebar">
+        <h2>Snap Aura</h2>
+
+        <ul>
+          <li class="active">Dashboard</li>
+
+          <li>Portfolio</li>
+
+          <li>Contacts</li>
+
+          <li>Settings</li>
+
+          <li>Logout</li>
+        </ul>
+      </aside>
+
+      <!-- Main -->
+
+      <main class="main">
+        <header class="topbar">
+          <h1>Dashboard</h1>
+        </header>
+
+        <!-- Stats -->
+
+        <section class="stats">
+          <div class="stat-card">
+            <h2 id="totalProjects">0</h2>
+
+            <p>Projects</p>
+          </div>
+          <div class="stat-card">
+            <h2 id="featuredProjects">0</h2>
+
+            <p>Featured</p>
+          </div>
+
+          <div class="stat-card">
+            <h2 id="categories">0</h2>
+
+            <p>Categories</p>
+          </div>
+
+          <div class="stat-card">
+            <h2 id="messages">0</h2>
+
+            <p>Messages</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../assets/js/config.js"></script>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

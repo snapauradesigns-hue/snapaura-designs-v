@@ -5,72 +5,83 @@
 
 const portfolioGrid = document.querySelector(".portfolio-page-grid");
 
+const API_URL = "http://localhost:5000/api";
+
 if (portfolioGrid) {
-  const projects = [];
+  loadPortfolio();
+}
 
-  /*==============================
-      LOAD PROJECTS
-    ==============================*/
+/*=========================================
+    LOAD PORTFOLIO FROM BACKEND
+=========================================*/
 
-  for (let i = 1; i <= 30; i++) {
-    projects.push({
-      id: i,
+async function loadPortfolio() {
+  try {
+    const response = await fetch(`${API_URL}/portfolio`);
 
-      image: `../assets/images/portfolio/project-${i}.png`,
+    const result = await response.json();
 
-      category: "Branding",
+    if (result.success) {
+      renderPortfolio(result.data);
+    } else {
+      portfolioGrid.innerHTML = `
+        <h2>No Portfolio Found</h2>
+      `;
+    }
+  } catch (err) {
+    console.error(err);
 
-      title: `Snap Aura Project ${i}`,
-    });
+    portfolioGrid.innerHTML = `
+      <h2>Unable to load portfolio.</h2>
+    `;
   }
+}
 
-  /*==============================
-      RENDER PORTFOLIO
-    ==============================*/
+/*=========================================
+    RENDER PORTFOLIO
+=========================================*/
 
-  function renderPortfolio(projectList) {
-    portfolioGrid.innerHTML = projectList
-      .map(
-        (project) => `
+function renderPortfolio(projectList) {
+  portfolioGrid.innerHTML = projectList
+    .map(
+      (project) => `
 
-            <article class="portfolio-card" data-id="${project.id}">
+      <article class="portfolio-card" data-id="${project._id}">
 
-                <img
-                    src="${project.image}"
-                    alt="${project.title}"
-                    loading="lazy">
+          <img
+              src="${project.image}"
+              alt="${project.title}"
+              loading="lazy">
 
-                <div class="portfolio-overlay">
+          <div class="portfolio-overlay">
 
-                    <span class="project-category">
+              <span class="project-category">
 
-                        ${project.category}
+                  ${project.category}
 
-                    </span>
+              </span>
 
-                    <h3 class="project-title">
+              <h3 class="project-title">
 
-                        ${project.title}
+                  ${project.title}
 
-                    </h3>
+              </h3>
 
-                </div>
+          </div>
 
-            </article>
+      </article>
 
-        `,
-      )
-      .join("");
+  `,
+    )
+    .join("");
 
-    initPortfolio();
-  }
+  initPortfolio();
+}
 
-  /*==============================
-      PORTFOLIO EVENTS
-    ==============================*/
+/*=========================================
+    PORTFOLIO EVENTS
+=========================================*/
 
- function initPortfolio(){
-
-    // Hover effects are handled completely by CSS.
-
- }}
+function initPortfolio() {
+  // Hover effects are handled completely by CSS.
+}

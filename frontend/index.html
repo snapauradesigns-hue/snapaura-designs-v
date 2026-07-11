@@ -765,54 +765,58 @@
             </div>
 
             <!-- RIGHT -->
-
-            <form class="contact-form">
+            <form class="contact-form" id="contact-form">
               <div class="input-group">
-                <input type="text" placeholder="Full Name" required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  required
+                />
               </div>
 
               <div class="input-group">
-                <input type="email" placeholder="Email Address" required />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                />
               </div>
 
               <div class="input-group">
-                <select>
-                  <option>Select Service</option>
+                <input type="tel" name="phone" placeholder="Phone Number" />
+              </div>
 
-                  <option>Logo Design</option>
-
-                  <option>Brand Identity</option>
-
-                  <option>Website Design</option>
-
-                  <option>Packaging</option>
-
-                  <option>Social Media</option>
-
-                  <option>Marketing</option>
+              <div class="input-group">
+                <select name="service" required>
+                  <option value="">Select Service</option>
+                  <option value="Logo Design">Logo Design</option>
+                  <option value="Brand Identity">Brand Identity</option>
+                  <option value="Website Design">Website Design</option>
+                  <option value="Packaging">Packaging</option>
+                  <option value="Social Media">Social Media</option>
+                  <option value="Marketing">Marketing</option>
                 </select>
               </div>
 
               <div class="input-group">
-                <select>
-                  <option>Estimated Budget</option>
-
-                  <option>₹0K – ₹1K</option>
-
-                  <option>₹2K – ₹5K</option>
-
-                  <option>₹5K – ₹10K</option>
-
-                  <option>₹10K – ₹25K</option>
-
-                  <option>₹25K+</option>
+                <select name="budget">
+                  <option value="">Estimated Budget</option>
+                  <option value="₹0K – ₹1K">₹0K – ₹1K</option>
+                  <option value="₹2K – ₹5K">₹2K – ₹5K</option>
+                  <option value="₹5K – ₹10K">₹5K – ₹10K</option>
+                  <option value="₹10K – ₹25K">₹10K – ₹25K</option>
+                  <option value="₹25K+">₹25K+</option>
                 </select>
               </div>
 
               <div class="input-group">
                 <textarea
+                  name="message"
                   rows="6"
                   placeholder="Tell us about your project..."
+                  required
                 ></textarea>
               </div>
 
@@ -936,6 +940,7 @@
     <script src="assets/js/cursor.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/contact.js"></script>
     <script>
       lucide.createIcons();
     </script>
