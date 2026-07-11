@@ -1,18 +1,24 @@
 const form = document.getElementById("loginForm");
 
+const API = window.API || "https://snap-aura-backend.onrender.com/api";
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const email = form.email.value;
-  const password = form.password.value;
+  const email = document.getElementById("email").value;
 
-  const response = await fetch("http://localhost:5000/api/auth/login", {
+  const password = document.getElementById("password").value;
+
+  const response = await fetch(`${API}/auth/login`, {
     method: "POST",
+
     headers: {
       "Content-Type": "application/json",
     },
+
     body: JSON.stringify({
       email,
+
       password,
     }),
   });
@@ -22,8 +28,10 @@ form.addEventListener("submit", async (e) => {
   if (result.success) {
     localStorage.setItem("token", result.token);
 
-    window.location = "dashboard.html";
+    localStorage.setItem("user", JSON.stringify(result.user));
+
+    window.location.href = "dashboard.html";
   } else {
-    alert(result.message);
+    document.getElementById("loginMessage").textContent = result.message;
   }
 });
