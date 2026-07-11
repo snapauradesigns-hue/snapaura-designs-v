@@ -4,7 +4,7 @@ if (!token) {
   window.location = "login.html";
 }
 
-const API = "https://snap-aura-backend.onrender.com";
+const API = "https://snap-aura-backend.onrender.com/api";
 const modal = document.getElementById("projectModal");
 
 const addBtn = document.getElementById("newProjectBtn");
