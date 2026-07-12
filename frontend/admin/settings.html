@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Snap Aura Settings</title>
+
+    <link rel="stylesheet" href="css/admin.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">Snap Aura</div>
+
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+
+          <li><a href="portfolio.html">Portfolio</a></li>
+
+          <li><a href="contacts.html">Contacts</a></li>
+
+          <li class="active"><a href="settings.html">Settings</a></li>
+
+          <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <h1>Settings</h1>
+
+          <button class="btn" id="saveBtn">Save Changes</button>
+        </div>
+
+        <div class="card">
+          <h2>Admin Settings</h2>
+
+          <br />
+
+          <label>Website Name</label>
+
+          <input id="siteName" class="input" value="Snap Aura Designs" />
+
+          <br /><br />
+
+          <label>Admin Email</label>
+
+          <input id="adminEmail" class="input" value="admin@snapaura.com" />
+
+          <br /><br />
+
+          <label>Instagram</label>
+
+          <input id="instagram" class="input" />
+
+          <br /><br />
+
+          <label>Facebook</label>
+
+          <input id="facebook" class="input" />
+
+          <br /><br />
+
+          <label>LinkedIn</label>
+
+          <input id="linkedin" class="input" />
+
+          <br /><br />
+
+          <label>Current Password</label>
+
+          <input type="password" id="currentPassword" class="input" />
+
+          <br /><br />
+
+          <label>New Password</label>
+
+          <input type="password" id="newPassword" class="input" />
+
+          <br /><br />
+
+          <label>Confirm Password</label>
+
+          <input type="password" id="confirmPassword" class="input" />
+        </div>
+      </main>
+    </div>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/settings.js"></script>
+  </body>
+</html>
