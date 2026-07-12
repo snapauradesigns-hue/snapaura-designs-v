@@ -33,4 +33,3 @@ window.onload = () => {
 
   document.getElementById("linkedin").value = settings.linkedin || "";
 };
-git status

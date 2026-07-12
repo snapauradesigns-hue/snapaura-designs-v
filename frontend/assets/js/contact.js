@@ -1,3 +1,4 @@
+const API = window.API;
 const form = document.getElementById("contact-form");
 
 if (form) {
@@ -10,45 +11,69 @@ if (form) {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
+    const formValues = new FormData(form);
+
     const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      service: form.service.value,
-      budget: form.budget.value,
-      message: form.message.value,
+      name: formValues.get("name"),
+      email: formValues.get("email"),
+      phone: formValues.get("phone"),
+      service: formValues.get("service"),
+      budget: formValues.get("budget"),
+      message: formValues.get("message"),
     };
+
+    console.log(formData);
 
     console.log("📦 Sending:", formData);
 
     try {
       const response = await fetch(`${API}/contact`, {
-    method: "POST",
-        
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      console.log("Response Status:", response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
 
       const result = await response.json();
 
       console.log("Response:", result);
 
       if (result.success) {
-        alert("✅ Thank you! Your inquiry has been sent successfully.");
+        console.log("✅ Success block reached");
+
         form.reset();
+
+        submitBtn.style.background = "#22c55e";
+        submitBtn.textContent = "✓ Inquiry Sent";
+
+        setTimeout(() => {
+          console.log("⏳ Resetting button");
+
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send Inquiry";
+          submitBtn.style.background = "";
+        }, 2000);
       } else {
+        console.log("❌ API returned success = false");
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Inquiry";
+
         alert(result.message);
       }
     } catch (error) {
-      console.error(error);
-      alert("❌ Server connection failed.");
-    }
+      console.error("FULL ERROR:", error);
 
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Send Inquiry";
+      alert(error.message);
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Inquiry";
+      submitBtn.style.background = "";
+    }
   });
 }

@@ -25,7 +25,7 @@ async function loadPortfolio() {
   try {
     console.log("Loading portfolio...");
 
-    const response = await fetch(`${API_URL}/api/portfolio`);
+    const response = await fetch(`${API}/portfolio`);
 
     console.log("Status:", response.status);
 
