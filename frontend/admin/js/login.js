@@ -1,6 +1,6 @@
-const form = document.getElementById("loginForm");
+const API = window.API;
 
-const API = window.API || "https://snap-aura-backend.onrender.com/api";
+const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();

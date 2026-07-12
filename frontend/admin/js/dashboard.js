@@ -1,5 +1,4 @@
-const API = window.API || "https://snap-aura-backend.onrender.com/api";
-
+const API = window.API;
 async function loadDashboard() {
   try {
     const response = await fetch(`${API}/dashboard/stats`);

@@ -1,57 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
+    <title>Contact Management</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
 
-<title>Contact Management</title>
+  <body>
+    <div class="container">
+      <h1>Contact Inquiries</h1>
 
-<link rel="stylesheet" href="css/admin.css">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
 
-</head>
+            <th>Email</th>
 
-<body>
+            <th>Phone</th>
 
-<div class="container">
+            <th>Service</th>
 
-<h1>Contact Inquiries</h1>
+            <th>Budget</th>
 
-<table>
+            <th>Date</th>
 
-<thead>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-<tr>
+        <tbody id="contactTable"></tbody>
+      </table>
+    </div>
 
-<th>Name</th>
-
-<th>Email</th>
-
-<th>Phone</th>
-
-<th>Service</th>
-
-<th>Budget</th>
-
-<th>Date</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody id="contactTable">
-
-</tbody>
-
-</table>
-
-</div>
-
-<script src="js/contactManager.js"></script>
-
-</body>
-
+    <script src="js/config.js"></script>
+    <script src="js/contactmanager.js"></script>
+  </body>
 </html>

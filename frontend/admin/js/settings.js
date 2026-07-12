@@ -1,4 +1,4 @@
-const API = window.API || "https://snap-aura-backend.onrender.com/api";
+const API = window.API;
 
 const token = localStorage.getItem("token");
 

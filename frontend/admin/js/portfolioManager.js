@@ -1,10 +1,11 @@
+const API = window.API;
+
 const token = localStorage.getItem("token");
 
 if (!token) {
   window.location = "login.html";
 }
 
-const API = window.API || "https://snap-aura-backend.onrender.com/api";
 const modal = document.getElementById("projectModal");
 
 const addBtn = document.getElementById("newProjectBtn");
