@@ -1,47 +1,163 @@
-<div class="admin-layout">
-  <aside class="sidebar">
-    <h2>Snap Aura</h2>
+<!doctype html>
+<html lang="en">
+<head>
 
-    <nav>
-      <a href="dashboard.html">Dashboard</a>
+<meta charset="UTF-8">
 
-      <a href="portfolio.html">Portfolio</a>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <a class="active" href="contacts.html">Contacts</a>
+<title>Snap Aura Contact Manager</title>
 
-      <a href="settings.html">Settings</a>
+<link rel="stylesheet" href="css/admin.css">
 
-      <a href="login.html">Logout</a>
-    </nav>
-  </aside>
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-  <main class="content">
-    <div class="page-header">
-      <h1>Contact Management</h1>
+</head>
 
-      <button class="btn" id="refreshBtn">Refresh</button>
-    </div>
+<body>
 
-    <input id="searchInput" class="search" placeholder="Search enquiries..." />
+<div class="dashboard">
 
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Name</th>
+<aside class="sidebar">
 
-          <th>Email</th>
+<div class="logo">
 
-          <th>Phone</th>
+Snap Aura
 
-          <th>Service</th>
-
-          <th>Status</th>
-
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody id="contactTable"></tbody>
-    </table>
-  </main>
 </div>
+
+<ul>
+
+<li>
+
+<a href="dashboard.html">
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="portfolio.html">
+
+Portfolio
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="contacts.html">
+
+Contacts
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+Settings
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#" id="logoutBtn">
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+
+<h1>
+
+Contact Management
+
+</h1>
+
+<button class="btn" id="refreshBtn">
+
+Refresh
+
+</button>
+
+</div>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search enquiries..."
+style="width:100%;padding:12px;margin-bottom:20px;border-radius:10px;">
+
+<div class="table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Service</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="contactTable">
+
+<tr>
+
+<td colspan="6">
+
+Loading...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="js/config.js"></script>
+
+<script src="js/contact.js"></script>
+
+</body>
+
+</html>
