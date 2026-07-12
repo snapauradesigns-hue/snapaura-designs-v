@@ -12,6 +12,6 @@ const {
 
 router.route("/").post(createContact).get(getContacts);
 
-router.delete("/:id", auth, deleteContact);
+router.delete("/:id", deleteContact);
 
 module.exports = router;

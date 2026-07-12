@@ -25,7 +25,7 @@ if (form) {
     console.log(formData);
 
     console.log("📦 Sending:", formData);
-
+    console.log("FORM DATA:", formData);
     try {
       const response = await fetch(`${API}/contact`, {
         method: "POST",

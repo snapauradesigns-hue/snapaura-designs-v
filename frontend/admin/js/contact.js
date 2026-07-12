@@ -85,13 +85,34 @@ function viewMessage(message) {
 }
 
 async function deleteContact(id) {
-  if (!confirm("Delete enquiry?")) return;
+  if (!confirm("Delete this enquiry?")) return;
 
-  await fetch(`${API}/contact/${id}`, {
-    method: "DELETE",
-  });
+  try {
+    const token = localStorage.getItem("token");
 
-  loadContacts();
+    const response = await fetch(`${API}/contact/${id}`, {
+      method: "DELETE",
+
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.message || "Unable to delete enquiry.");
+      return;
+    }
+
+    alert(result.message);
+
+    loadContacts();
+  } catch (err) {
+    console.error(err);
+
+    alert("Unable to delete enquiry.");
+  }
 }
 
 async function markCompleted(id) {
