@@ -17,26 +17,26 @@ if (portfolioGrid) {
 
 async function loadPortfolio() {
   try {
-    const response = await fetch(`${API_URL}/portfolio`);
+    console.log("Loading portfolio...");
+
+    const response = await fetch(`${API_URL}/api/portfolio`);
+
+    console.log(response.status);
 
     const result = await response.json();
+
+    console.log(result);
 
     if (result.success) {
       renderPortfolio(result.data);
     } else {
-      portfolioGrid.innerHTML = `
-        <h2>No Portfolio Found</h2>
-      `;
+      portfolioGrid.innerHTML = "<h2>No Portfolio Found</h2>";
     }
   } catch (err) {
     console.error(err);
-
-    portfolioGrid.innerHTML = `
-      <h2>Unable to load portfolio.</h2>
-    `;
+    portfolioGrid.innerHTML = "<h2>Unable to load portfolio.</h2>";
   }
 }
-
 /*=========================================
     RENDER PORTFOLIO
 =========================================*/

@@ -3,7 +3,7 @@
    Dynamic Portfolio
 ========================================== */
 
-const API_URL = "https://snap-aura-backend.onrender.com";
+const API = "https://snap-aura-backend.onrender.com/api";
 
 const grid = document.getElementById("portfolioGrid");
 const filterButtons = document.querySelectorAll(".portfolio-filters button");
@@ -23,21 +23,36 @@ let currentSearch = "";
 
 async function loadPortfolio() {
   try {
-    const response = await fetch(`${API_URL}/portfolio`);
+    console.log("Loading portfolio...");
+
+    const response = await fetch(`${API_URL}/api/portfolio`);
+
+    console.log("Status:", response.status);
+
     const result = await response.json();
 
+    console.log(result);
+
     portfolioProjects = result.data;
+    if (portfolioProjects.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+            <h2>No portfolio projects yet.</h2>
+            <p>New projects will be added soon.</p>
+        </div>
+    `;
+      return;
+    }
+
+    console.log("Projects:", portfolioProjects);
 
     renderPortfolio();
   } catch (err) {
     console.error(err);
 
-    grid.innerHTML = `
-      <h2>Unable to load portfolio.</h2>
-    `;
+    grid.innerHTML = "<h2>Unable to load portfolio.</h2>";
   }
 }
-
 /* ================================
    FILTER
 ================================ */
@@ -59,7 +74,7 @@ function getFilteredProjects() {
 /* ================================
    RENDER
 ================================ */
-
+console.log("Rendering", portfolioProjects);
 function renderPortfolio() {
   const filtered = getFilteredProjects();
 

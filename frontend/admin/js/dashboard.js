@@ -1,32 +1,28 @@
-const token = localStorage.getItem("token");
+const API = window.API || "https://snap-aura-backend.onrender.com/api";
 
-if (!token) {
-  window.location = "login.html";
-}
-
-const API = "https://snap-aura-backend.onrender.com";
-
-async function loadDashboardStats() {
+async function loadDashboard() {
   try {
     const response = await fetch(`${API}/dashboard/stats`);
-
     const result = await response.json();
 
-    if (!result.success) return;
+    console.log("API:", result);
+
+    console.log(document.getElementById("totalProjects"));
+    console.log(document.getElementById("featuredProjects"));
+    console.log(document.getElementById("totalCategories"));
+    console.log(document.getElementById("totalMessages"));
 
     document.getElementById("totalProjects").textContent =
       result.data.totalProjects;
-
     document.getElementById("featuredProjects").textContent =
       result.data.featuredProjects;
-
-    document.getElementById("categories").textContent =
+    document.getElementById("totalCategories").textContent =
       result.data.totalCategories;
-
-    document.getElementById("messages").textContent = result.data.totalContacts;
+    document.getElementById("totalMessages").textContent =
+      result.data.totalContacts;
   } catch (err) {
-    console.error(err);
+    console.error("Dashboard Error:", err);
   }
 }
 
-loadDashboardStats();
+loadDashboard();
