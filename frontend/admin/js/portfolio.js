@@ -1,4 +1,5 @@
 const API = window.API;
+let editProjectId = null;
 
 const table = document.getElementById("portfolioTable");
 
@@ -59,15 +60,29 @@ async function loadPortfolio() {
 
             <td>
 
-            <button
-            class="btn btn-danger"
-            onclick="deleteProject('${project._id}')">
+           <button
+class="btn"
+onclick="editProject('${project._id}')">
 
-            Delete
+Edit
 
-            </button>
+</button>
 
-            </td>
+<td>
+
+<button
+class="btn btn-primary"
+onclick="editProject('${project._id}')">
+Edit
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteProject('${project._id}')">
+Delete
+</button>
+
+</td>
 
             </tr>
 
@@ -108,37 +123,84 @@ loadPortfolio();
 const modal = document.getElementById("projectModal");
 
 document.getElementById("addBtn").onclick = () => {
+  editProjectId = null;
+
+  document.getElementById("saveProject").textContent = "Upload Project";
+
+  document.getElementById("title").value = "";
+  document.getElementById("brand").value = "";
+  document.getElementById("category").selectedIndex = 0;
+  document.getElementById("description").value = "";
+  document.getElementById("featured").checked = false;
+  document.getElementById("image").value = "";
+
   modal.style.display = "flex";
 };
-
 function closeModal() {
   modal.style.display = "none";
+}
+async function editProject(id) {
+  const response = await fetch(`${API}/portfolio`);
+
+  const result = await response.json();
+
+  const project = result.data.find((p) => p._id === id);
+
+  if (!project) return;
+
+  editProjectId = id;
+
+  document.getElementById("title").value = project.title;
+  document.getElementById("brand").value = project.brand;
+  document.getElementById("category").value = project.category;
+  document.getElementById("description").value = project.description;
+  document.getElementById("featured").checked = project.featured;
+
+  document.getElementById("saveProject").textContent = "Update Project";
+
+  modal.style.display = "flex";
 }
 async function uploadProject() {
   const formData = new FormData();
 
   formData.append("title", document.getElementById("title").value);
-
   formData.append("brand", document.getElementById("brand").value);
-
   formData.append("category", document.getElementById("category").value);
-
   formData.append("description", document.getElementById("description").value);
-
   formData.append("featured", document.getElementById("featured").checked);
 
-  formData.append("image", document.getElementById("image").files[0]);
+  const image = document.getElementById("image").files[0];
 
-  const response = await fetch(`${API}/portfolio`, {
-    method: "POST",
+  if (image) {
+    formData.append("image", image);
+  }
 
+  const url = editProjectId
+    ? `${API}/portfolio/${editProjectId}`
+    : `${API}/portfolio`;
+
+  const method = editProjectId ? "PUT" : "POST";
+
+  const response = await fetch(url, {
+    method,
     body: formData,
   });
 
   const result = await response.json();
 
   if (result.success) {
-    alert("Project Uploaded!");
+    alert(editProjectId ? "Project Updated!" : "Project Uploaded!");
+
+    editProjectId = null;
+
+    document.getElementById("saveProject").textContent = "Upload Project";
+
+    document.getElementById("title").value = "";
+    document.getElementById("brand").value = "";
+    document.getElementById("category").selectedIndex = 0;
+    document.getElementById("description").value = "";
+    document.getElementById("featured").checked = false;
+    document.getElementById("image").value = "";
 
     closeModal();
 
