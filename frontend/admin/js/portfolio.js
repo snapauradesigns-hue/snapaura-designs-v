@@ -58,15 +58,6 @@ async function loadPortfolio() {
 
             </td>
 
-            <td>
-
-           <button
-class="btn"
-onclick="editProject('${project._id}')">
-
-Edit
-
-</button>
 
 <td>
 
