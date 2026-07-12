@@ -6,8 +6,6 @@ async function loadDashboard() {
 
     const result = await response.json();
 
-    console.log(result);
-
     if (!result.success) {
       throw new Error("API Error");
     }

@@ -18,7 +18,7 @@ async function loadFeaturedProjects() {
 
     const result = await response.json();
 
-    console.log(result);
+
 
     featuredGrid.innerHTML = "";
 

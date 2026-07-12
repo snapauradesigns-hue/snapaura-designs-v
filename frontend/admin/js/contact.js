@@ -5,7 +5,7 @@ const table = document.getElementById("contactTable");
 let contacts = [];
 
 async function loadContacts() {
-  table.innerHTML = `<tr><td colspan="6">Loading...</td></tr>`;
+  table.innerHTML = `<tr><td colspan="6"><div class="loader"></div></td></tr>`;
 
   try {
     const response = await fetch(`${API}/contact`);
@@ -132,13 +132,12 @@ async function deleteContact(id) {
       return;
     }
 
-    alert(result.message);
+    showToast(result.message);
 
     loadContacts();
   } catch (err) {
     console.error(err);
-
-    alert("Unable to delete enquiry.");
+    showToast("❌ Unable to delete enquiry.", "error");
   }
 }
 

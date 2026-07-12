@@ -15,7 +15,7 @@ saveBtn.onclick = () => {
 
   localStorage.setItem("snapAuraSettings", JSON.stringify(data));
 
-  alert("Settings Saved Successfully!");
+  showToast("✅ Settings Saved");
 };
 
 window.onload = () => {

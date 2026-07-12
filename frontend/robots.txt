@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://snapauradesigns.vercel.app/sitemap.xml

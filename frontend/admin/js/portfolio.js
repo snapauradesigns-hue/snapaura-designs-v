@@ -4,7 +4,7 @@ let editProjectId = null;
 const table = document.getElementById("portfolioTable");
 
 async function loadPortfolio() {
-  table.innerHTML = `<tr><td colspan="6">Loading...</td></tr>`;
+  table.innerHTML = `<tr><td colspan="6"><div class="loader"></div></td></tr>`;
 
   try {
     const response = await fetch(`${API}/portfolio`);

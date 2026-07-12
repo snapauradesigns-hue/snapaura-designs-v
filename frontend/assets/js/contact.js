@@ -5,7 +5,7 @@ if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    console.log("✅ Form Submitted");
+   
 
     const submitBtn = form.querySelector("button[type='submit']");
     submitBtn.disabled = true;
@@ -21,8 +21,6 @@ if (form) {
       budget: formValues.get("budget"),
       message: formValues.get("message"),
     };
-
-    console.log(formData);
 
     console.log("📦 Sending:", formData);
     console.log("FORM DATA:", formData);
@@ -42,18 +40,15 @@ if (form) {
       const result = await response.json();
 
       console.log("Response:", result);
-
       if (result.success) {
-        console.log("✅ Success block reached");
-
-        form.reset();
+        showToast("✅ Inquiry Sent");
 
         submitBtn.style.background = "#22c55e";
         submitBtn.textContent = "✓ Inquiry Sent";
 
-        setTimeout(() => {
-          console.log("⏳ Resetting button");
+        form.reset();
 
+        setTimeout(() => {
           submitBtn.disabled = false;
           submitBtn.textContent = "Send Inquiry";
           submitBtn.style.background = "";
@@ -64,12 +59,12 @@ if (form) {
         submitBtn.disabled = false;
         submitBtn.textContent = "Send Inquiry";
 
-        alert(result.message);
+        showToast(result.message, "error");
       }
     } catch (error) {
-      console.error("FULL ERROR:", error);
+      console.error(error);
 
-      alert(error.message);
+      showToast("Server connection failed.", "error");
 
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Inquiry";

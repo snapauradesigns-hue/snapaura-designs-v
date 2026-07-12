@@ -25,8 +25,6 @@ async function loadPortfolio() {
 
     const result = await response.json();
 
-    console.log(result);
-
     if (result.success) {
       renderPortfolio(result.data);
     } else {

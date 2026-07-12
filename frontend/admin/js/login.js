@@ -28,7 +28,7 @@ form.addEventListener("submit", async (e) => {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      alert(result.message || "Login Failed");
+      showToast(result.message || "Login Failed", "error");
 
       btn.disabled = false;
       btn.textContent = "Login";
@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
   } catch (err) {
     console.error(err);
 
-    alert("Unable to connect to server.");
+    showToast("Unable to connect to server.", "error");
 
     btn.disabled = false;
     btn.textContent = "Login";

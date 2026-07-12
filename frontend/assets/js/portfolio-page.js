@@ -23,15 +23,11 @@ let currentSearch = "";
 
 async function loadPortfolio() {
   try {
-    console.log("Loading portfolio...");
-
     const response = await fetch(`${API}/portfolio`);
 
     console.log("Status:", response.status);
 
     const result = await response.json();
-
-    console.log(result);
 
     portfolioProjects = result.data;
     if (portfolioProjects.length === 0) {
