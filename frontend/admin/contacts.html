@@ -1,0 +1,47 @@
+<div class="admin-layout">
+  <aside class="sidebar">
+    <h2>Snap Aura</h2>
+
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+
+      <a href="portfolio.html">Portfolio</a>
+
+      <a class="active" href="contacts.html">Contacts</a>
+
+      <a href="settings.html">Settings</a>
+
+      <a href="login.html">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="page-header">
+      <h1>Contact Management</h1>
+
+      <button class="btn" id="refreshBtn">Refresh</button>
+    </div>
+
+    <input id="searchInput" class="search" placeholder="Search enquiries..." />
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+
+          <th>Email</th>
+
+          <th>Phone</th>
+
+          <th>Service</th>
+
+          <th>Status</th>
+
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="contactTable"></tbody>
+    </table>
+  </main>
+</div>
