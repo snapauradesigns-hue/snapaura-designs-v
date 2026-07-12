@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Snap Aura Admin</title>
+    <title>Snap Aura Admin Dashboard</title>
 
     <link rel="stylesheet" href="css/admin.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,9 +16,8 @@
   <body>
     <div class="dashboard">
       <!-- Sidebar -->
-
       <aside class="sidebar">
-        <h2>Snap Aura</h2>
+        <div class="logo">Snap Aura</div>
 
         <ul>
           <li class="active">
@@ -39,9 +37,7 @@
           </li>
 
           <li>
-            <a href="login.html" onclick="localStorage.removeItem('token')"
-              >Logout</a
-            >
+            <a href="#" id="logoutBtn">Logout</a>
           </li>
         </ul>
       </aside>
@@ -49,41 +45,69 @@
       <!-- Main -->
 
       <main class="main">
-        <header class="topbar">
+        <div class="topbar">
           <h1>Dashboard</h1>
-        </header>
 
-        <!-- Stats -->
+          <button class="btn" onclick="location.href = 'portfolio.html'">
+            + Add Project
+          </button>
+        </div>
 
         <section class="stats">
-          <div class="stat-card">
-            <span id="totalProjects">0</span>
+          <div class="card">
+            <h2 id="totalProjects">0</h2>
 
-            <p>Projects</p>
-          </div>
-          <div class="stat-card">
-            <span id="featuredProjects">0</span>
-
-            <p>Featured</p>
+            <p>Total Projects</p>
           </div>
 
-          <div class="stat-card">
-            <span id="totalCategories">0</span>
+          <div class="card">
+            <h2 id="featuredProjects">0</h2>
+
+            <p>Featured Projects</p>
+          </div>
+
+          <div class="card">
+            <h2 id="totalCategories">0</h2>
 
             <p>Categories</p>
           </div>
 
-          <div class="stat-card">
-            <span id="totalMessages">0</span>
+          <div class="card">
+            <h2 id="totalMessages">0</h2>
 
-            <p>Messages</p>
+            <p>Contact Messages</p>
           </div>
         </section>
+
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>System Status</th>
+
+                <th>Value</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Backend</td>
+
+                <td id="backendStatus">Checking...</td>
+              </tr>
+
+              <tr>
+                <td>Database</td>
+
+                <td id="databaseStatus">Checking...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
 
     <script src="js/config.js"></script>
-
     <script src="js/dashboard.js"></script>
   </body>
 </html>

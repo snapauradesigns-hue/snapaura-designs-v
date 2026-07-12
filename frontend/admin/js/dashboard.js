@@ -1,27 +1,45 @@
 const API = window.API;
+
 async function loadDashboard() {
   try {
     const response = await fetch(`${API}/dashboard/stats`);
+
     const result = await response.json();
 
-    console.log("API:", result);
+    console.log(result);
 
-    console.log(document.getElementById("totalProjects"));
-    console.log(document.getElementById("featuredProjects"));
-    console.log(document.getElementById("totalCategories"));
-    console.log(document.getElementById("totalMessages"));
+    if (!result.success) {
+      throw new Error("API Error");
+    }
 
     document.getElementById("totalProjects").textContent =
       result.data.totalProjects;
+
     document.getElementById("featuredProjects").textContent =
       result.data.featuredProjects;
+
     document.getElementById("totalCategories").textContent =
       result.data.totalCategories;
+
     document.getElementById("totalMessages").textContent =
       result.data.totalContacts;
-  } catch (err) {
-    console.error("Dashboard Error:", err);
+
+    document.getElementById("backendStatus").textContent = "✅ Online";
+
+    document.getElementById("databaseStatus").textContent = "✅ Connected";
+  } catch (error) {
+    console.error(error);
+
+    document.getElementById("backendStatus").textContent = "❌ Offline";
+
+    document.getElementById("databaseStatus").textContent = "❌ Error";
   }
 }
+
+document.getElementById("logoutBtn").onclick = () => {
+  localStorage.removeItem("token");
+
+  location.href = "login.html";
+};
 
 loadDashboard();

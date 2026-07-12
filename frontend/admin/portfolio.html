@@ -2,100 +2,128 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>Portfolio Manager</title>
 
     <link rel="stylesheet" href="css/admin.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <div class="container">
-      <h1>Portfolio Management</h1>
+    <div class="dashboard">
+      <!-- Sidebar -->
 
-      <div class="toolbar">
-        <input type="text" id="search" placeholder="Search project..." />
+      <aside class="sidebar">
+        <div class="logo">Snap Aura</div>
 
-        <select id="filterCategory">
-          <option value="">All Categories</option>
-          <option value="Logo">Logo</option>
-          <option value="Branding">Branding</option>
-          <option value="Packaging">Packaging</option>
-          <option value="Marketing">Marketing</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Website">Website</option>
+        <ul>
+          <li>
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+
+          <li class="active">
+            <a href="portfolio.html">Portfolio</a>
+          </li>
+
+          <li>
+            <a href="contacts.html">Contacts</a>
+          </li>
+
+          <li>
+            <a href="settings.html">Settings</a>
+          </li>
+
+          <li>
+            <a href="login.html" id="logoutBtn">Logout</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main -->
+
+      <main class="main">
+        <div class="topbar">
+          <h1>Portfolio Manager</h1>
+
+          <div style="display: flex; gap: 15px">
+            <button class="btn" id="refreshBtn">Refresh</button>
+
+            <button class="btn" id="addBtn">+ Add Project</button>
+          </div>
+        </div>
+
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Preview</th>
+
+                <th>Title</th>
+
+                <th>Brand</th>
+
+                <th>Category</th>
+
+                <th>Featured</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="portfolioTable">
+              <tr>
+                <td colspan="6">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal" id="projectModal">
+      <div class="modal-content">
+        <h2>Add Project</h2>
+
+        <input id="title" placeholder="Project Title" />
+
+        <input id="brand" placeholder="Brand Name" />
+
+        <select id="category">
+          <option>Logo</option>
+
+          <option>Branding</option>
+
+          <option>Packaging</option>
+
+          <option>Social Media</option>
+
+          <option>Marketing</option>
         </select>
 
-        <button id="newProjectBtn">+ Add Project</button>
-      </div>
+        <textarea id="description" placeholder="Description"></textarea>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Preview</th>
+        <input type="file" id="image" />
 
-            <th>Title</th>
+        <label>
+          <input type="checkbox" id="featured" />
 
-            <th>Brand</th>
+          Featured Project
+        </label>
 
-            <th>Category</th>
+        <br /><br />
 
-            <th>Featured</th>
+        <button class="btn" id="saveProject">Upload Project</button>
 
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody id="portfolioTable"></tbody>
-      </table>
-    </div>
-    <!-- Upload Modal -->
-
-    <div id="projectModal" class="modal">
-      <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-
-        <h2>Add New Project</h2>
-
-        <form id="projectForm">
-          <input
-            type="text"
-            name="title"
-            placeholder="Project Title"
-            required
-          />
-
-          <input type="text" name="brand" placeholder="Brand Name" required />
-
-          <select name="category">
-            <option>Logo</option>
-            <option>Branding</option>
-            <option>Packaging</option>
-            <option>Marketing</option>
-            <option>Social Media</option>
-            <option>Website</option>
-          </select>
-
-          <textarea name="description" placeholder="Description"></textarea>
-
-          <input type="file" name="image" id="imageInput" required />
-
-          <img
-            id="preview"
-            style="display: none; width: 100%; border-radius: 10px"
-          />
-
-          <label>
-            <input type="checkbox" name="featured" />
-
-            Featured Project
-          </label>
-
-          <button type="submit">Upload Project</button>
-        </form>
+        <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
       </div>
     </div>
+
     <script src="js/config.js"></script>
-    <script src="js/portfolioManager.js"></script>
+    <script src="js/portfolio.js"></script>
   </body>
 </html>
