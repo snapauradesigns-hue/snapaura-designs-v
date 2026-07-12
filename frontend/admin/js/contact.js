@@ -50,7 +50,13 @@ function renderContacts(data) {
 
 <button
 class="btn"
-onclick="viewMessage('${contact.message}')">
+onclick="viewMessage(this)"
+data-name="${encodeURIComponent(contact.name)}"
+data-email="${encodeURIComponent(contact.email)}"
+data-phone="${encodeURIComponent(contact.phone || "")}"
+data-service="${encodeURIComponent(contact.service)}"
+data-budget="${encodeURIComponent(contact.budget || "")}"
+data-message="${encodeURIComponent(contact.message)}">
 
 View
 
@@ -80,8 +86,28 @@ Delete
   });
 }
 
-function viewMessage(message) {
-  alert(message);
+function viewMessage(button) {
+  const name = decodeURIComponent(button.dataset.name);
+  const email = decodeURIComponent(button.dataset.email);
+  const phone = decodeURIComponent(button.dataset.phone);
+  const service = decodeURIComponent(button.dataset.service);
+  const budget = decodeURIComponent(button.dataset.budget);
+  const message = decodeURIComponent(button.dataset.message);
+
+  alert(
+    `Name: ${name}
+
+Email: ${email}
+
+Phone: ${phone}
+
+Service: ${service}
+
+Budget: ${budget}
+
+Message:
+${message}`,
+  );
 }
 
 async function deleteContact(id) {
@@ -101,7 +127,8 @@ async function deleteContact(id) {
     const result = await response.json();
 
     if (!response.ok) {
-      alert(result.message || "Unable to delete enquiry.");
+      alert(result.message || "Delete failed.");
+
       return;
     }
 

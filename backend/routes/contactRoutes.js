@@ -10,6 +10,8 @@ const {
 
 router.route("/").post(createContact).get(getContacts);
 
-router.delete("/:id", deleteContact);
+const auth = require("../middleware/auth");
+
+router.delete("/:id", auth, deleteContact);
 
 module.exports = router;
