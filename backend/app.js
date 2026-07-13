@@ -12,6 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is healthy",
+  });
+});
+
 app.use("/api/portfolio", portfolioRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/dashboard", dashboardRoutes);
