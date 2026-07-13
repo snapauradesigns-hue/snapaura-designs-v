@@ -7,15 +7,20 @@ form.addEventListener("submit", async (e) => {
 
   const btn = form.querySelector("button");
 
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
   btn.disabled = true;
   btn.textContent = "Signing In...";
 
   try {
     const response = await fetch(`${API}/auth/login`, {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         email,
         password,
@@ -24,21 +29,23 @@ form.addEventListener("submit", async (e) => {
 
     const result = await response.json();
 
-    if (!response.ok) {
+    if (!response.ok || !result.success) {
       showToast(result.message || "Login Failed", "error");
+
       btn.disabled = false;
       btn.textContent = "Login";
+
       return;
     }
 
-    // Save JWT Token
     localStorage.setItem("token", result.token);
-
-    // Save Admin Details
     localStorage.setItem("admin", JSON.stringify(result.user));
 
-    // Redirect
-    window.location.href = "dashboard.html";
+    showToast("✅ Login Successful");
+
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 800);
   } catch (err) {
     console.error(err);
 
