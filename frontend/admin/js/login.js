@@ -13,26 +13,21 @@ form.addEventListener("submit", async (e) => {
   try {
     const response = await fetch(`${API}/auth/login`, {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify({
-        email: document.getElementById("email").value.trim(),
-
-        password: document.getElementById("password").value,
+        email,
+        password,
       }),
     });
 
     const result = await response.json();
 
-    if (!response.ok || !result.success) {
+    if (!response.ok) {
       showToast(result.message || "Login Failed", "error");
-
       btn.disabled = false;
       btn.textContent = "Login";
-
       return;
     }
 
