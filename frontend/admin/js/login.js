@@ -1,5 +1,33 @@
 const API = window.API;
+exports.login = async (req, res) => {
+  try {
+    console.log("LOGIN BODY:", req.body);
 
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    console.log("USER FOUND:", !!user);
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid Credentials"
+      });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+
+    console.log("PASSWORD MATCH:", match);
+
+    if (!match) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid Credentials"
+      });
+    }
+
+    // ...rest of your code
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
