@@ -1,60 +1,54 @@
 const API = window.API;
-exports.login = async (req, res) => {
-  try {
-    console.log("LOGIN BODY:", req.body);
 
-    const { email, password } = req.body;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
 
-    const user = await User.findOne({ email });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    console.log("USER FOUND:", !!user);
+    const btn = form.querySelector("button");
 
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid Credentials"
+    btn.disabled = true;
+    btn.textContent = "Signing In...";
+
+    try {
+      const response = await fetch(`${API}/auth/login`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          email: document.getElementById("email").value.trim(),
+
+          password: document.getElementById("password").value,
+        }),
       });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        alert(result.message || "Login Failed");
+
+        btn.disabled = false;
+        btn.textContent = "Login";
+
+        return;
+      }
+
+      localStorage.setItem("token", result.token);
+
+      localStorage.setItem("admin", JSON.stringify(result.user));
+
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      console.error(err);
+
+      alert("Unable to connect to server.");
+
+      btn.disabled = false;
+      btn.textContent = "Login";
     }
-
-    const match = await bcrypt.compare(password, user.password);
-
-    console.log("PASSWORD MATCH:", match);
-
-    if (!match) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid Credentials"
-      });
-    }
-
-    // ...rest of your code
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-
-  console.log("Submitting login...");
-  console.log(API);
-
-  try {
-    const response = await fetch(`${API}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    console.log("HTTP Status:", response.status);
-
-    const result = await response.json();
-
-    console.log(result);
-  } catch (err) {
-    console.error("FETCH ERROR:", err);
-  }
+  });
 });
