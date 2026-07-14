@@ -122,6 +122,8 @@ body {
 
   width: 260px;
 
+  min-width: 260px;
+
   height: 100vh;
 
   background: #111827;
@@ -255,9 +257,9 @@ body {
 }
 
 .main {
-  flex: 1;
-  padding: 40px;
-  background: #0f172a;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 30px;
 }
 
 .topbar {
@@ -269,8 +271,12 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
   gap: 20px;
+
+  margin-top: 25px;
 }
 
 .card {
@@ -308,19 +314,20 @@ body {
 }
 
 .actions input {
-  padding: 12px;
+  width: 280px;
 
-  width: 250px;
+  height: 44px;
+
+  padding: 0 15px;
 
   border-radius: 10px;
 
-  background: #1e293b;
+  border: 1px solid #334155;
 
-  border: none;
+  background: #0f172a;
 
   color: white;
 }
-
 .portfolio-grid {
   display: grid;
 
@@ -328,15 +335,18 @@ body {
 
   gap: 25px;
 }
-
 .project-card {
-  background: #1e293b;
+  display: flex;
 
-  border-radius: 18px;
+  flex-direction: column;
+
+  background: #1e293b;
 
   overflow: hidden;
 
-  transition: 0.3s;
+  border-radius: 18px;
+
+  height: 100%;
 }
 
 .project-card:hover {
@@ -610,4 +620,68 @@ body {
 
 .danger:hover {
   background: #b91c1c;
+}
+button {
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+.admin-table {
+  table-layout: fixed;
+
+  width: 100%;
+}
+.main {
+  padding: 35px;
+}
+.modal {
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  position: fixed;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-card {
+  max-width: 650px;
+
+  width: 90%;
+}
+.card h2 {
+  font-size: 42px;
+
+  margin-bottom: 12px;
+}
+.sidebar a.active {
+  background: #2563eb;
+
+  font-weight: 700;
 }

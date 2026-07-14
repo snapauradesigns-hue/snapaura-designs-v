@@ -6,6 +6,7 @@ const {
   createContact,
   getContacts,
   deleteContact,
+  updateContactStatus,
 } = require("../controllers/contactController");
 
 router.route("/").post(createContact).get(getContacts);
