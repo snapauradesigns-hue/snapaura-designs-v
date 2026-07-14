@@ -2,93 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Portfolio | Snap Aura Designs</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <title>Portfolio Manager</title>
 
     <link rel="stylesheet" href="css/admin.css" />
-    <link rel="icon" type="image/png" href="../favicon.png" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
-    <div class="dashboard">
-      <!-- Sidebar -->
-
+    <div class="layout">
       <aside class="sidebar">
-        <div class="logo">Snap Aura</div>
+        <div class="brand">
+          <img src="assets/logo.png" class="brand-logo" />
 
-        <ul>
-          <li>
-            <a href="dashboard.html">Dashboard</a>
-          </li>
+          <h2>Snap Aura</h2>
+        </div>
 
-          <li class="active">
-            <a href="portfolio.html">Portfolio</a>
-          </li>
+        <nav>
+          <a href="dashboard.html"> Dashboard </a>
 
-          <li>
-            <a href="contacts.html">Contacts</a>
-          </li>
+          <a class="active" href="portfolio.html"> Portfolio </a>
 
-          <li>
-            <a href="settings.html">Settings</a>
-          </li>
+          <a href="contacts.html"> Contacts </a>
 
-          <li>
-            <a href="#" id="logoutBtn">Logout</a>
-          </li>
-        </ul>
+          <a href="settings.html"> Settings </a>
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
       </aside>
 
-      <!-- Main -->
-
       <main class="main">
-        <div class="topbar">
-          <h1>Portfolio Manager</h1>
+        <div class="page-header">
+          <h1>Portfolio</h1>
 
-          <div style="display: flex; gap: 15px">
-            <button class="btn" id="refreshBtn">Refresh</button>
+          <div class="actions">
+            <input id="searchInput" placeholder="Search Project" />
 
-            <button class="btn" id="addBtn">+ Add Project</button>
+            <button id="refreshBtn">Refresh</button>
+
+            <button id="addBtn">+ Add Project</button>
           </div>
         </div>
 
-        <div class="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Preview</th>
-
-                <th>Title</th>
-
-                <th>Brand</th>
-
-                <th>Category</th>
-
-                <th>Featured</th>
-
-                <th>Actions</th>
-              </tr>
-            </thead>
-
-            <tbody id="portfolioTable">
-              <tr>
-                <td colspan="6"><div class="loader"></div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div id="portfolioGrid" class="portfolio-grid"></div>
       </main>
     </div>
 
-    <div class="modal" id="projectModal">
-      <div class="modal-content">
-        <h2>Add Project</h2>
+    <!-- Modal -->
+
+    <div id="projectModal" class="modal">
+      <div class="modal-card">
+        <h2 id="modalTitle">Add Project</h2>
 
         <input id="title" placeholder="Project Title" />
 
@@ -106,28 +71,28 @@
           <option>Marketing</option>
         </select>
 
-        <textarea id="description" placeholder="Description"></textarea>
+        <textarea id="description" placeholder="Description"> </textarea>
 
         <input type="file" id="image" />
 
         <label>
           <input type="checkbox" id="featured" />
 
-          Featured Project
+          Featured
         </label>
 
-        <br /><br />
+        <div class="modal-buttons">
+          <button id="saveBtn">Save</button>
 
-        <button class="btn" id="saveProject">Upload Project</button>
-
-        <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
+          <button onclick="closeModal()">Cancel</button>
+        </div>
       </div>
     </div>
-
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
     <script src="js/sidebar.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/logout.js"></script>
     <script src="js/toast.js"></script>
     <script src="js/portfolio.js"></script>
   </body>

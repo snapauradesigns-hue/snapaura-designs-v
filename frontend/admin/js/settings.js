@@ -1,35 +1,68 @@
-const saveBtn = document.getElementById("saveBtn");
+const form = document.getElementById("settingsForm");
 
-saveBtn.onclick = () => {
-  const data = {
-    siteName: document.getElementById("siteName").value,
+async function loadSettings() {
+  try {
+    const result = await api.get("/settings");
 
-    adminEmail: document.getElementById("adminEmail").value,
+    const s = result.data;
 
-    instagram: document.getElementById("instagram").value,
+    websiteName.value = s.websiteName || "";
 
-    facebook: document.getElementById("facebook").value,
+    phone.value = s.phone || "";
 
-    linkedin: document.getElementById("linkedin").value,
-  };
+    email.value = s.email || "";
 
-  localStorage.setItem("snapAuraSettings", JSON.stringify(data));
+    instagram.value = s.instagram || "";
 
-  showToast("✅ Settings Saved");
-};
+    facebook.value = s.facebook || "";
 
-window.onload = () => {
-  const settings = JSON.parse(localStorage.getItem("snapAuraSettings"));
+    linkedin.value = s.linkedin || "";
 
-  if (!settings) return;
+    whatsapp.value = s.whatsapp || "";
 
-  document.getElementById("siteName").value = settings.siteName || "";
+    footerText.value = s.footerText || "";
+  } catch (e) {
+    showToast(e.message, "error");
+  }
+}
 
-  document.getElementById("adminEmail").value = settings.adminEmail || "";
+loadSettings();
+form.addEventListener(
+  "submit",
 
-  document.getElementById("instagram").value = settings.instagram || "";
+  async (e) => {
+    e.preventDefault();
 
-  document.getElementById("facebook").value = settings.facebook || "";
+    try {
+      await api.put(
+        "/settings",
 
-  document.getElementById("linkedin").value = settings.linkedin || "";
-};
+        JSON.stringify({
+          websiteName: websiteName.value,
+
+          phone: phone.value,
+
+          email: email.value,
+
+          instagram: instagram.value,
+
+          facebook: facebook.value,
+
+          linkedin: linkedin.value,
+
+          whatsapp: whatsapp.value,
+
+          footerText: footerText.value,
+        }),
+      );
+
+      showToast("Settings Saved");
+    } catch (err) {
+      showToast(
+        err.message,
+
+        "error",
+      );
+    }
+  },
+);

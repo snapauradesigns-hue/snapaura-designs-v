@@ -1,43 +1,31 @@
-const API = window.API;
-
 async function loadDashboard() {
   try {
-    const response = await fetch(`${API}/dashboard/stats`);
+    const result = await api.get("/dashboard/stats");
 
-    const result = await response.json();
+    document.getElementById("projects").textContent = result.data.totalProjects;
 
-    if (!result.success) {
-      throw new Error("API Error");
-    }
+    document.getElementById("contacts").textContent = result.data.totalContacts;
 
-    document.getElementById("totalProjects").textContent =
-      result.data.totalProjects;
-
-    document.getElementById("featuredProjects").textContent =
+    document.getElementById("featured").textContent =
       result.data.featuredProjects;
 
-    document.getElementById("totalCategories").textContent =
+    document.getElementById("categories").textContent =
       result.data.totalCategories;
 
-    document.getElementById("totalMessages").textContent =
-      result.data.totalContacts;
+    document.getElementById("backendStatus").textContent = "🟢 Backend Online";
 
-    document.getElementById("backendStatus").textContent = "✅ Online";
+    document.getElementById("databaseStatus").textContent =
+      "🟢 MongoDB Connected";
+  } catch (err) {
+    document.getElementById("backendStatus").textContent = "🔴 Backend Offline";
 
-    document.getElementById("databaseStatus").textContent = "✅ Connected";
-  } catch (error) {
-    console.error(error);
+    document.getElementById("databaseStatus").textContent = "🔴 Database Error";
 
-    document.getElementById("backendStatus").textContent = "❌ Offline";
-
-    document.getElementById("databaseStatus").textContent = "❌ Error";
+    showToast(err.message, "error");
   }
 }
 
-document.getElementById("logoutBtn").onclick = () => {
-  localStorage.removeItem("token");
-
-  location.href = "login.html";
-};
-
 loadDashboard();
+document.querySelector(".admin-name").textContent = JSON.parse(
+  localStorage.getItem("admin"),
+).name;

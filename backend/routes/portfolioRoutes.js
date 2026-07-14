@@ -1,8 +1,7 @@
-const auth = require("../middleware/auth");
-
 const express = require("express");
 const router = express.Router();
 
+const auth = require("../middleware/auth");
 const upload = require("../middleware/upload");
 
 const {
@@ -13,20 +12,13 @@ const {
   deletePortfolio,
 } = require("../controllers/portfolioController");
 
-router
-  .route("/")
-  .get(getPortfolio)
-  .post(upload.single("image"), createPortfolio);
+// Public routes
+router.get("/", getPortfolio);
+router.get("/:id", getPortfolioById);
 
-router
-  .route("/:id")
-  .get(getPortfolioById)
-  .put(upload.single("image"), updatePortfolio)
-  .delete(deletePortfolio);
-
+// Protected routes
 router.post("/", auth, upload.single("image"), createPortfolio);
-
 router.put("/:id", auth, upload.single("image"), updatePortfolio);
-
 router.delete("/:id", auth, deletePortfolio);
+
 module.exports = router;

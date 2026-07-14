@@ -93,3 +93,38 @@ exports.deleteContact = async (req, res) => {
     });
   }
 };
+exports.updateContactStatus = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+
+      {
+        status: req.body.status,
+      },
+
+      {
+        new: true,
+      },
+    );
+
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+
+        message: "Contact not found",
+      });
+    }
+
+    res.json({
+      success: true,
+
+      data: contact,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+
+      message: err.message,
+    });
+  }
+};

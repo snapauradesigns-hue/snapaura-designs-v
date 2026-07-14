@@ -1,54 +1,53 @@
-const API = window.API;
+const form = document.getElementById("loginForm");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loginForm");
+const btn = document.querySelector(".login-btn");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+const eye = document.getElementById("togglePassword");
 
-    const btn = form.querySelector("button");
+eye.onclick = () => {
+  password.type = password.type === "password" ? "text" : "password";
+};
 
-    btn.disabled = true;
-    btn.textContent = "Signing In...";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await fetch(`${API}/auth/login`, {
-        method: "POST",
+  btn.disabled = true;
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+  btn.innerHTML = "Signing In...";
 
-        body: JSON.stringify({
-          email: document.getElementById("email").value.trim(),
+  try {
+    const response = await api.post(
+      "/auth/login",
 
-          password: document.getElementById("password").value,
-        }),
-      });
+      JSON.stringify({
+        email: email.value.trim(),
 
-      const result = await response.json();
+        password: password.value,
+      }),
+    );
 
-      if (!response.ok || !result.success) {
-        alert(result.message || "Login Failed");
+    localStorage.setItem(
+      "token",
 
-        btn.disabled = false;
-        btn.textContent = "Login";
+      response.token,
+    );
 
-        return;
-      }
+    localStorage.setItem(
+      "admin",
 
-      localStorage.setItem("token", result.token);
+      JSON.stringify(response.user),
+    );
 
-      localStorage.setItem("admin", JSON.stringify(result.user));
+    showToast("Login Successful");
 
-      window.location.href = "dashboard.html";
-    } catch (err) {
-      console.error(err);
+    setTimeout(() => {
+      location.href = "dashboard.html";
+    }, 800);
+  } catch (err) {
+    showToast(err.message, "error");
 
-      alert("Unable to connect to server.");
+    btn.disabled = false;
 
-      btn.disabled = false;
-      btn.textContent = "Login";
-    }
-  });
+    btn.innerHTML = "Login";
+  }
 });
